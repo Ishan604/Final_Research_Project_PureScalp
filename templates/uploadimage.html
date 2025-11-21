@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uploadimage.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block navbar %}
+
+<header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="PureScalp Logo" class="logo-img">
+                <h1>PureScalp</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/haircare">Hair Care</a></li>
+                    <li><a href="/upload" class="active">Upload</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/patientregistration">Patient Registration</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+                <button class="signup-btn" onclick="window.location.href='/signup'">Sign Up</button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Upload Hero Section -->
+    <section class="upload-hero">
+        <div class="container">
+            <h2><u>Scalp Analysis</u></h2>
+            <p class="subtitle">Upload images for personalized scalp diagnosis</p>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-container">
+                <div class="upload-info">
+                    <h3>How to Upload</h3>
+                    <ol>
+                        <li>Take clear photos of your scalp in good lighting</li>
+                        <li>Upload a single clear image</li>
+                        <li>Our system will analyze your scalp condition</li>
+                        <li>Receive personalized recommendations</li>
+                    </ol>
+                </div>
+                
+                <div class="dropzone" id="dropzone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h4>Drag & Drop Your Scalp Images Here</h4>
+                    <p>or</p>
+                    <button class="browse-btn" id="browseBtn">Browse File</button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+            </div>
+
+            <div class="uploaded-images" id="uploadedImages">
+                <h3>Your Uploaded Images</h3>
+                <div class="image-grid" id="imageGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section class="analysis-section">
+        <div class="container">
+            <button class="analyze-btn" id="analyzeBtn" disabled>
+                <i class="fas fa-search"></i> Analyze My Scalp
+            </button>
+            <div class="analysis-results" id="analysisResults"></div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/uploadimage.js') }}"></script>
+{% endblock %}

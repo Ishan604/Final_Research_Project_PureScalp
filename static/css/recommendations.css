@@ -1,0 +1,335 @@
+/* recommendations.css - Updated to match layout.css design system */
+
+/* Reuse variables from layout.css */
+:root {
+    --primary-color: #1a3e2f; /* Dark green */
+    --secondary-color: #000000; /* Black */
+    --accent-color: #ffffff; /* White */
+    --text-color: #333333;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #777777;
+}
+
+/* Base styles from layout.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: 80px; /* Account for fixed header */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 15px;
+}
+
+/* Header section */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.header p {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* Recommendation card */
+.recommendations-card {
+    background-color: var(--accent-color);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Patient info section */
+.patient-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.patient-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.patient-details p {
+    color: var(--text-color);
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+}
+
+.score-badge {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.score-badge h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.score-badge p {
+    font-size: 0.875rem;
+}
+
+/* Recommendation sections */
+.recommendation-section {
+    margin: 25px 0;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--light-gray);
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.main-recommendation {
+    background-color: var(--light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Image + text layout */
+.recommendation-with-image {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.recommendation-image {
+    width: 100%;
+    max-width: 280px;
+}
+
+.recommendation-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.recommendation-text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main-recommendation h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.main-recommendation p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.recommendation-meta {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--medium-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.match-info {
+    background-color: rgba(26, 62, 47, 0.1);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.confidence-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.confidence-bar {
+    width: 100px;
+    height: 8px;
+    background: var(--medium-gray);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.source-info {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 4px solid var(--dark-gray);
+}
+
+.source-info h5 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.source-info p {
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+/* Buttons - aligned with layout.css */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 0.875rem;
+    text-align: center;
+    flex: 1;
+    min-width: 150px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Error and info messages */
+.error-message {
+    background-color: #ffe6e6;
+    color: #d63031;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #d63031;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.error-message h4 {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.additional-info {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.875rem;
+    border-left: 4px solid #ffc107;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .patient-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    .recommendation-with-image {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding-top: 30px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .recommendations-card {
+        padding: 20px 15px;
+    }
+}

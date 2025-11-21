@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/recommendations.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block navbar %}
+<header class="header">
+    <div class="container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="PureScalp Logo" class="logo-img">
+            <h1>PureScalp</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/haircare">Hair Care</a></li>
+                <li><a href="/upload">Upload</a></li>
+                <li><a href="/aboutus">About Us</a></li>
+                <li><a href="/patientregistration">Patient Registration</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+            <button class="signup-btn" onclick="window.location.href='/signup'">Sign Up</button>
+        </div>
+        <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="recommendations-section">
+    <div class="container">
+
+        <div class="recommendations-card">
+            <!-- Patient Information Section -->
+            <div class="patient-info">
+                <div class="patient-details">
+                    <h3>Patient: {{ patient_name or "Current Patient" }}</h3>
+                    <p><strong>Assessment Date:</strong> {{ assessment_date or "Today" }}</p>
+                    <p><strong>Patient ID:</strong> {{ patient_id or "N/A" }}</p>
+                </div>
+                <div class="score-badge">
+                    <h2>{{ score or 0 }}</h2>
+                    <p>Your Score</p>
+                </div>
+            </div>
+
+            <!-- Main Recommendation -->
+            {% if recommendation and not error %}
+            <div class="recommendation-section">
+                <h3 class="section-title">Your Personalized Recommendation</h3>
+                <div class="main-recommendation recommendation-with-image">
+                    {% if image_url %}
+                    <div class="recommendation-image">
+                        <img src="{{ image_url }}" alt="Recommended visual" />
+                    </div>
+                    {% endif %}
+                    <div class="recommendation-text">
+                        <h4>Recommended Treatment</h4>
+                        <p>{{ recommendation }}</p>
+                    </div>
+                    
+                    <!-- <div class="recommendation-meta">
+                        <div class="match-info">
+                            {% if match_type == 'exact' %}
+                                ✓ Exact Score Match
+                            {% elif match_type == 'closest' %}
+                                ≈ Closest Score Match
+                            {% else %}
+                                 Backup Recommendation
+                            {% endif %}
+                        </div>
+                        
+                        {% if confidence %}
+                        <div class="confidence-indicator">
+                            <span>Confidence:</span>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill"></div>
+                            </div>
+                            <span>{{ "%.0f" | format(confidence * 100) }}%</span>
+                        </div>
+                        {% endif %}
+                    </div> -->
+
+                    {% if additional_info %}
+                    <div class="additional-info">
+                        <strong>Note:</strong> {{ additional_info }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Error handling -->
+            {% if error %}
+            <div class="error-message">
+                <h4>Unable to Load Recommendations</h4>
+                <p>{{ error }}</p>
+                <p>Please complete your assessment or contact support if the problem persists.</p>
+            </div>
+            {% endif %}
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+
+        <!-- Important Notes -->
+        <div class="recommendations-card">
+            <h3 class="section-title">Important Information</h3>
+            <div class="main-recommendation">
+                <p>• This recommendation is based on your questionnaire score of <strong>{{ score }}</strong> points.</p>
+                <p>• Recommendations are sourced from our hair care database and matched to your specific score.</p>
+                <p>• For persistent scalp issues, please consult with a dermatologist or healthcare professional.</p>
+                <p>• Individual results may vary. Monitor your scalp's response to any new treatments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

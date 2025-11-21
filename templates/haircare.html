@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/haircare.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block navbar %}
+
+<header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="PureScalp Logo" class="logo-img">
+                <h1>PureScalp</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/haircare" class="active">Hair Care</a></li>
+                    <li><a href="/upload">Upload</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/patientregistration">Patient Registration</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+                <button class="signup-btn" onclick="window.location.href='/signup'">Sign Up</button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="products-hero">
+    <div class="container">
+        <h1 style="padding-top: 20px;">Premium Hair Care Solutions</h1>
+        <p>Discover our natural, effective products specially formulated to address your specific hair and scalp concerns</p>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="products-container">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Hair Care Products</h2>
+        </div>
+        
+        <div class="products-grid">
+            <!-- Coconut Oil -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='img/cocnut_oil.jpg') }}" alt="Organic Coconut Oil">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Dry Scalp</span>
+                    <h3>Organic Coconut Oil</h3>
+                    <p>Deeply moisturizes and nourishes dry scalp, reducing flakiness and itchiness while promoting healthy hair growth.</p>
+                    
+                    <div class="product-benefits">
+                        <h4>Key Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Intense hydration for dry scalp</li>
+                            <li><i class="fas fa-check-circle"></i> Reduces flakiness and itchiness</li>
+                            <li><i class="fas fa-check-circle"></i> Strengthens hair follicles</li>
+                            <li><i class="fas fa-check-circle"></i> Prevents protein loss in hair</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tea Tree Oil -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='img/tea_oil.jpg') }}" alt="Tea Tree Essential Oil">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Dandruff</span>
+                    <h3>Tea Tree Essential Oil</h3>
+                    <p>Powerful antifungal and antibacterial properties help combat dandruff and soothe irritated scalp.</p>
+                    
+                    <div class="product-benefits">
+                        <h4>Key Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Fights dandruff-causing fungi</li>
+                            <li><i class="fas fa-check-circle"></i> Unclogs hair follicles</li>
+                            <li><i class="fas fa-check-circle"></i> Soothes scalp inflammation</li>
+                            <li><i class="fas fa-check-circle"></i> Promotes cleaner, healthier scalp</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Olive Oil -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='img/olive_oil.jpg') }}" alt="Extra Virgin Olive Oil">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Hair Strength</span>
+                    <h3>Extra Virgin Olive Oil</h3>
+                    <p>Rich in antioxidants and vitamins that strengthen hair from root to tip, reducing breakage and split ends.</p>
+                    
+                    <div class="product-benefits">
+                        <h4>Key Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Strengthens hair shaft</li>
+                            <li><i class="fas fa-check-circle"></i> Reduces breakage and split ends</li>
+                            <li><i class="fas fa-check-circle"></i> Deep conditions hair</li>
+                            <li><i class="fas fa-check-circle"></i> Improves hair elasticity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shea Butter -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='img/shea_butter.jpg') }}" alt="Raw Shea Butter">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Hair Shine</span>
+                    <h3>Raw Shea Butter</h3>
+                    <p>Provides intense moisture and creates a protective layer that adds brilliant shine and softness to hair.</p>
+                    
+                    <div class="product-benefits">
+                        <h4>Key Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Adds brilliant shine</li>
+                            <li><i class="fas fa-check-circle"></i> Tames frizz and flyaways</li>
+                            <li><i class="fas fa-check-circle"></i> Provides heat protection</li>
+                            <li><i class="fas fa-check-circle"></i> Seals in moisture</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Jojoba Oil -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='img/jojoba_oil.jpg') }}" alt="Jojoba Oil">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Oily Scalp</span>
+                    <h3>Jojoba Oil</h3>
+                    <p>Balances scalp's natural oil production, moisturizes without greasiness, and helps control excess sebum.</p>
+                    
+                    <div class="product-benefits">
+                        <h4>Key Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Balances oil production</li>
+                            <li><i class="fas fa-check-circle"></i> Non-greasy moisturization</li>
+                            <li><i class="fas fa-check-circle"></i> Unclogs hair follicles</li>
+                            <li><i class="fas fa-check-circle"></i> Reduces scalp acne</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Peppermint Oil -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='img/peppermint_oil.jpg') }}" alt="Peppermint Essential Oil">
+                </div>
+                <div class="product-content">
+                    <span class="product-tag">Cooling & Refreshing</span>
+                    <h3>Peppermint Essential Oil</h3>
+                    <p>Provides a cooling sensation that stimulates blood flow to the scalp, promoting hair growth and refreshment.</p>
+                    
+                    <div class="product-benefits">
+                        <h4>Key Benefits:</h4>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Cooling and refreshing sensation</li>
+                            <li><i class="fas fa-check-circle"></i> Stimulates blood circulation</li>
+                            <li><i class="fas fa-check-circle"></i> Promotes hair growth</li>
+                            <li><i class="fas fa-check-circle"></i> Invigorates tired scalp</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

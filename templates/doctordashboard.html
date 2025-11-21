@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctordashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="doctor-info">
+                    <h1><i class="fas fa-user-md"></i> Dr. {{ doctor.Name if doctor else 'Doctor' }}</h1>
+                    <p>{{ doctor.Specialization if doctor and doctor.Specialization else 'Hair & Scalp Specialist' }}</p>
+                    <p><i class="fas fa-envelope"></i> {{ doctor.Email if doctor else 'doctor@purescalp.com' }}</p>
+                </div>
+                <div class="header-actions">
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-logout" 
+                       onclick="return confirm('Are you sure you want to logout?')">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Dashboard Statistics -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <div class="number">{{ stats.total_patients }}</div>
+                <div class="label">Total Patients</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-check-circle"></i></div>
+                <div class="number">{{ stats.patients_with_assessments }}</div>
+                <div class="label">Completed Assessments</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                <div class="number">{{ stats.total_assessments }}</div>
+                <div class="label">Total Questionnaires</div>
+            </div>
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-chart-line"></i></div>
+                <div class="number">{{ stats.avg_score }}</div>
+                <div class="label">Average Score</div>
+            </div>
+        </div>
+
+        <!-- Patients Table -->
+        <div class="patients-table">
+            <div class="table-header">
+                <h3><i class="fas fa-clipboard-list"></i> Patient Registry</h3>
+            </div>
+            
+            {% if patients_data %}
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Assessments</th>
+                            <th>Latest Score</th>
+                            <th>Last Assessment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for patient_data in patients_data %}
+                        <tr>
+                            <td><strong>#{{ patient_data.patient.PatientID }}</strong></td>
+                            <td>{{ patient_data.patient.Name }}</td>
+                            <td>{{ patient_data.patient.Email }}</td>
+                            <td>{{ patient_data.patient.Age or 'N/A' }}</td>
+                            <td>{{ patient_data.patient.Gender or 'N/A' }}</td>
+                            <td>{{ patient_data.total_assessments }}</td>
+                            <td>
+                                {% if patient_data.latest_score != 'N/A' %}
+                                    <strong>{{ patient_data.latest_score }}</strong>
+                                {% else %}
+                                    <span class="text-muted">{{ patient_data.latest_score }}</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ patient_data.last_assessment }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <h3>No Patients Registered Yet</h3>
+                <p>Patients will appear here once they register for assessments</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

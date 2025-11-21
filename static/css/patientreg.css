@@ -1,0 +1,453 @@
+/* Registration Page Specific Styles */
+.register-hero {
+    padding: 140px 0 60px;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.register-hero h2 {
+    color: var(--primary-color);
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.register-hero .subtitle {
+    color: var(--text-color);
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.register-section {
+    padding: 60px 0;
+    background-color: var(--accent-color);
+}
+
+.register-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 30px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-with-icon input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 62, 47, 0.2);
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding-top: 8px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-custom {
+    height: 18px;
+    width: 18px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    margin-right: 8px;
+    position: relative;
+}
+
+.radio-option input:checked ~ .radio-custom {
+    background-color: var(--primary-color);
+    box-shadow: inset 0 0 0 3px var(--accent-color);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.register-btn {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.register-btn:hover {
+    background: #0f2a1f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.benefits-section {
+    padding: 60px 0;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.benefits-section h3 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 50px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background-color: var(--accent-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-card i {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.benefit-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.benefit-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .register-hero {
+        padding: 120px 0 40px;
+    }
+    
+    .register-hero h2 {
+        font-size: 28px;
+    }
+    
+    .register-hero .subtitle {
+        font-size: 18px;
+    }
+    
+    .register-card {
+        padding: 30px 20px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    
+    .benefits-section h3 {/* Registration Page Specific Styles */
+.register-hero {
+    padding: 140px 0 60px;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.register-hero h2 {
+    color: var(--primary-color);
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.register-hero .subtitle {
+    color: var(--text-color);
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.register-section {
+    padding: 60px 0;
+    background-color: var(--accent-color);
+}
+
+.register-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 30px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-with-icon input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 62, 47, 0.2);
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 30px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.register-btn {
+    background: var(--primary-color);
+    color: var(--accent-color);
+    padding: 15px 40px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.register-btn:hover {
+    background: #0f2a1f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.benefits-section {
+    padding: 60px 0;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.benefits-section h3 {
+    color: var(--primary-color);
+    font-size: 28px;
+    margin-bottom: 50px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background-color: var(--accent-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.benefit-card i {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.benefit-card h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.benefit-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .register-hero {
+        padding: 120px 0 40px;
+    }
+    
+    .register-hero h2 {
+        font-size: 28px;
+    }
+    
+    .register-hero .subtitle {
+        font-size: 18px;
+    }
+    
+    .register-card {
+        padding: 30px 20px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .gender-group {
+        margin-left: 0;
+    }
+    
+    .radio-group {
+        justify-content: flex-start;
+    }
+    
+    .benefits-section h3 {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block navbar %}
+
+<header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="PureScalp Logo" class="logo-img">
+                <h1>PureScalp</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/haircare">Hair Care</a></li>
+                    <li><a href="/upload">Upload</a></li>
+                    <li><a href="/aboutus">About Us</a></li>
+                    <li><a href="/patientregistration">Patient Registration</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn" onclick="window.location.href='/login'">Login</button>
+                <button class="signup-btn" onclick="window.location.href='/signup'">Sign Up</button>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Revolutionary Scalp Care Solutions</h1>
+                <p>Discover the perfect balance for your scalp with our scientifically formulated products</p>
+                <button class="cta-btn" onclick="window.location.href='/haircare'">Explore Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="container">
+            <div class="quiz-card">
+                <table class="quiz-table">
+                    <tr>
+                        <td class="quiz-image-cell">
+                            <div class="quiz-image">
+                                <img src="{{ url_for('static', filename='img/hero1.jpeg') }}" alt="Scalp Care Quiz">
+                            </div>
+                        </td>
+                        <td class="quiz-content-cell">
+                            <div class="quiz-content">
+                                <h2>Understanding Your Scalp</h2>
+                                <p>What scalp type do I have?<br>Which scalp care system shall I go for?</p>
+                                <button class="quiz-btn" onclick="window.location.href='/quiz'">TAKE SCALP QUIZ</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scalp Solutions Section -->
+    <section class="solutions-section">
+        <div class="container">
+            <h1>Solutions In Your Scalp Care System</h1>
+            <div class="solutions-columns">
+                <!-- Left Column -->
+                <div class="solution-column">
+                    <div class="main-condition">
+                        <ul class="sub-conditions">
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp1.png') }}" alt="Oily Scalp">
+                                <span>Remedies for Oily Scalp</span>
+                            </li>
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp6.png') }}" alt="Dry Scalp">
+                                <span>Remedies for Dry Scalp</span>
+                            </li>
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp2.png') }}" alt="Dry Hair Loss">
+                                <span>Dry Hair Loss</span>
+                            </li>
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp3.png') }}" alt="Dry Dandruff">
+                                <span>Dry Dandruff</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="solution-column">
+                    <div class="main-condition">
+                        <ul class="sub-conditions">
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp4.png') }}" alt="Seborrheic Dermatitis">
+                                <span>Seborrheic Dermatitis</span>
+                            </li>
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp9.png') }}" alt="Folliculitis">
+                                <span>Folliculitis</span>
+                            </li>
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp5.png') }}" alt="Excessive Oil">
+                                <span>Excessive Oil</span>
+                            </li>
+                            <li>
+                                <img src="{{ url_for('static', filename='img/scalp10.png') }}" alt="Dehydrated">
+                                <span>Dehydrated</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Why Choose PureScalp?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-flask"></i>
+                    <h3>Scientifically Formulated</h3>
+                    <p>Our products are developed with dermatologists to ensure effectiveness and safety.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Natural Ingredients</h3>
+                    <p>We use high-quality natural ingredients that are gentle on your scalp.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Professional Grade</h3>
+                    <p>Trusted by salons and scalp care professionals worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <p>"PureScalp transformed my hair care routine. After years of struggling with oily scalp, I finally
+                        found a solution that works!"</p>
+                    <div class="author">- Sarah K.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"As a hairstylist, I recommend PureScalp to all my clients with scalp issues. The results speak
+                        for themselves."</p>
+                    <div class="author">- Michael T.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"The scalp quiz helped me identify my exact scalp type and the perfect products for my needs.
+                        Game changer!"</p>
+                    <div class="author">- Jessica L.</div>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Join Our Community</h2>
+                <p>Subscribe to get expert scalp care tips and exclusive offers</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}
