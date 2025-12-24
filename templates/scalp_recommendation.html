@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scalp_recommendation.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1>Analysis Results</h1>
+        <h3 class="text-primary">Detected Condition: {{ disease | replace('_', ' ') | title }}</h3>
+        <p class="text-muted">Based on your scalp analysis, here is your personalized care plan.</p>
+    </div>
+
+    <!-- Recommendations Loop -->
+    <h2>Recommendations for {{ disease | capitalize }} Scalp</h2>
+    {% if recommendations %}
+        {% for rec in recommendations %}
+            <div class="recommendation-card">
+                <h4>{{ rec.phase }} Phase ({{ rec.time_range }})</h4>
+
+                <p><strong>Goal:</strong> {{ rec.goal }}</p>
+                <p><strong>Frequency:</strong> {{ rec.frequency }}</p>
+                <p><strong>Product Type:</strong> {{ rec.product_type }}</p>
+                <p><strong>Ingredients:</strong> {{ rec.active_ingredients_examples }}</p>
+                <p><strong>Brand Examples:</strong> {{ rec.brand_examples }}</p>
+
+                <p><strong>How to use:</strong> {{ rec.how_to_use }}</p>
+
+                {% if rec.cleanup_required == "Yes" %}
+                    <p><strong>Cleanup required:</strong> {{ rec.cleanup_steps }}</p>
+                {% else %}
+                    <p><strong>Cleanup required:</strong> No</p>
+                {% endif %}
+
+                <p><strong>Do:</strong> {{ rec.do }}</p>
+                <p><strong>Avoid:</strong> {{ rec.avoid }}</p>
+                <p class="warning"><strong>Doctor advice:</strong> {{ rec.when_to_see_doctor }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning text-center">
+            <h4>No specific recommendations found.</h4>
+            <p>We could not find a care plan for "<strong>{{ disease }}</strong>". Please consult a specialist directly.</p>
+        </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <!-- Link back to the upload page -->
+        <a href="/upload" class="btn btn-secondary">Analyze Another Image</a>
+    </div>
+</div>
+{% endblock %}

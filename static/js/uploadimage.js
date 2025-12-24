@@ -148,45 +148,84 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function renderAnalysisResults(data) {
-        analysisResults.style.display = 'block';
-        if (!data.success) {
-            analysisResults.innerHTML = `
-                <div class="result-item">
-                    <h4>Error</h4>
-                    <p>${data.error || 'Unknown error'}</p>
-                </div>
-            `;
-            return;
-        }
+      analysisResults.style.display = "block";
 
-        const items = (data.results || []).map((r) => {
-            if (r.error) {
-                return `
-                    <div class="result-item">
-                        <h4>${r.filename}</h4>
-                        <p>Error: ${r.error}${typeof r.scalp_confidence !== 'undefined' ? ` (scalp confidence: ${(r.scalp_confidence*100).toFixed(1)}%)` : ''}</p>
-                    </div>
-                `;
-            }
-            const pct = (r.confidence * 100).toFixed(1);
+      if (!data.success) {
+        analysisResults.innerHTML = `
+            <div class="result-item">
+                <h4>Error</h4>
+                <p>${data.error || "Unknown error"}</p>
+            </div>
+        `;
+        return;
+      }
+
+      // Build results list + capture the predicted disease (first successful result)
+      let firstPredictedDisease = null;
+
+      const items = (data.results || [])
+        .map((r) => {
+          if (r.error) {
             return `
                 <div class="result-item">
                     <h4>${r.filename}</h4>
-                    <p><strong>Predicted:</strong> ${r.predicted_class}</p>
-                    <p><strong>Confidence:</strong> ${pct}%</p>
+                    <p>
+                        Error: ${r.error}
+                        ${
+                          typeof r.scalp_confidence !== "undefined"
+                            ? ` (scalp confidence: ${(
+                                r.scalp_confidence * 100
+                              ).toFixed(1)}%)`
+                            : ""
+                        }
+                    </p>
                 </div>
             `;
-        }).join('');
+          }
 
-        analysisResults.innerHTML = `
-            <h3>Analysis Results</h3>
-            ${items}
-            <button class="browse-btn" id="newAnalysisBtn">Start New Analysis</button>
+          // Save the first predicted class for the "View Recommendations" button
+          if (!firstPredictedDisease) {
+            firstPredictedDisease = r.predicted_class;
+          }
+
+          const pct = (r.confidence * 100).toFixed(1);
+          return `
+            <div class="result-item">
+                <h4>${r.filename}</h4>
+                <p><strong>Predicted:</strong> ${r.predicted_class}</p>
+            </div>
         `;
+        })
+        .join("");
 
-        document.getElementById('newAnalysisBtn').addEventListener('click', function() {
-            resetAnalysis();
+      // Build buttons (only show View Recommendations if we have a predicted disease)
+      const viewBtnHtml = firstPredictedDisease
+        ? `<button id="viewRecommendationsBtn" class="browse-btn" data-disease="${firstPredictedDisease}">
+                View Recommendations
+           </button>`
+        : "";
+
+      analysisResults.innerHTML = `
+        <h3>Analysis Results</h3>
+        ${items}
+        <button class="browse-btn" id="newAnalysisBtn">Start New Analysis</button>
+        ${viewBtnHtml}
+    `;
+
+      // Attach handlers AFTER injecting HTML
+      document
+        .getElementById("newAnalysisBtn")
+        .addEventListener("click", resetAnalysis);
+
+      const viewBtn = document.getElementById("viewRecommendationsBtn");
+      if (viewBtn) {
+        viewBtn.addEventListener("click", function () {
+          const disease = viewBtn.getAttribute("data-disease");
+          window.location.href = `/recommendations?disease=${encodeURIComponent(
+            disease
+          )}`;
         });
+      }
     }
     
     // Reset analysis

@@ -149,3 +149,36 @@ def analyze_images():
         'success': True,
         'results': results
     })
+
+@main_bp.route("/recommendations")
+def recommendations():
+    disease = request.args.get("disease")
+
+    if not disease:
+        flash("No disease selected.", "error")
+        return render_template("scalp_recommendation.html")
+
+    # Load recommendations from Excel
+    import pandas as pd
+    from config import Config
+
+    try:
+        df = pd.read_csv("datasets/scalp_recommendations.csv")
+    except Exception as e:
+        return f"Error loading recommendations file: {e}"
+
+    # Filter by predicted disease
+    disease_recs = df[df["disease"] == disease]
+
+    if disease_recs.empty:
+        flash("No recommendations found for this condition.", "warning")
+
+    # Convert to list of dicts for template
+    recommendations = disease_recs.to_dict(orient="records")
+
+    return render_template(
+        "scalp_recommendation.html",
+        disease=disease,
+        recommendations=recommendations
+    )
+

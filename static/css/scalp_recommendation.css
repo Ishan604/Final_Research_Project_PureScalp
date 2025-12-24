@@ -1,0 +1,258 @@
+/* Scalp Recommendation Page Styles */
+
+/* Header Section */
+.text-center {
+    text-align: center;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.text-primary {
+    color: var(--primary-color);
+    margin: 15px 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.text-muted {
+    color: var(--dark-gray);
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Main Heading */
+h1 {
+    font-size: 42px;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin: 40px 0 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: 600;
+}
+
+/* Recommendation Cards */
+.recommendation-card {
+    background: var(--accent-color);
+    border: 2px solid var(--medium-gray);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.recommendation-card h4 {
+    color: var(--primary-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--light-gray);
+    font-weight: 600;
+}
+
+.recommendation-card p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.recommendation-card strong {
+    color: var(--secondary-color);
+    font-weight: 600;
+    display: inline-block;
+    min-width: 150px;
+}
+
+/* Warning Section */
+.warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.warning strong {
+    color: #856404;
+}
+
+/* Alert Box */
+.alert {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    color: #856404;
+}
+
+.alert h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.alert p {
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+/* Button Styles */
+.btn-secondary {
+    background: var(--secondary-color);
+    color: var(--accent-color);
+    padding: 14px 35px;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Phase-specific styling */
+.recommendation-card h4::before {
+    content: "📋 ";
+    font-size: 22px;
+    margin-right: 8px;
+}
+
+/* Content Icons */
+.recommendation-card p:has(strong:contains("Goal"))::before {
+    content: "🎯 ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("Frequency"))::before {
+    content: "⏰ ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("Product Type"))::before {
+    content: "🧴 ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("Ingredients"))::before {
+    content: "🧪 ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("Brand Examples"))::before {
+    content: "🏷️ ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("How to use"))::before {
+    content: "💡 ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("Do"))::before {
+    content: "✅ ";
+    margin-right: 5px;
+}
+
+.recommendation-card p:has(strong:contains("Avoid"))::before {
+    content: "❌ ";
+    margin-right: 5px;
+}
+
+/* Container spacing for page */
+.container[style*="margin-top"] {
+    padding-top: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .text-primary {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .recommendation-card {
+        padding: 20px;
+    }
+
+    .recommendation-card h4 {
+        font-size: 20px;
+    }
+
+    .recommendation-card strong {
+        display: block;
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+
+    .btn-secondary {
+        padding: 12px 28px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .text-primary {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin: 30px 0 20px;
+    }
+
+    .recommendation-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .recommendation-card h4 {
+        font-size: 18px;
+    }
+
+    .recommendation-card p {
+        font-size: 14px;
+    }
+
+    .container[style*="margin-top"] {
+        padding-top: 80px;
+    }
+}
