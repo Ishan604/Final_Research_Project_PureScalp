@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (viewBtn) {
         viewBtn.addEventListener("click", function () {
           const disease = viewBtn.getAttribute("data-disease");
-          window.location.href = `/recommendations?disease=${encodeURIComponent(
+          window.location.href = `/scalp_recommendations?disease=${encodeURIComponent(
             disease
           )}`;
         });

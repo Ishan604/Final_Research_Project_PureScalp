@@ -150,7 +150,7 @@ def analyze_images():
         'results': results
     })
 
-@main_bp.route("/recommendations")
+@main_bp.route("/scalp_recommendations")
 def recommendations():
     disease = request.args.get("disease")
 
