@@ -131,7 +131,7 @@ def save_model(model: nn.Module, filepath: str, class_names: list = None):
     
     # Save model
     torch.save(save_dict, filepath)
-    print(f"✅ Model saved to: {filepath}")
+    print(f"Model saved to: {filepath}")
 
 def load_model(filepath: str, model_class, num_classes: int = None) -> nn.Module:
     """Load PyTorch model"""
@@ -155,11 +155,11 @@ def load_model(filepath: str, model_class, num_classes: int = None) -> nn.Module
         model = model.to(Config.DEVICE)
         model.eval()
         
-        print(f"✅ Model loaded from: {filepath}")
+        print(f"Model loaded from: {filepath}")
         return model
         
     except Exception as e:
-        print(f"❌ Error loading model: {e}")
+        print(f"Error loading model: {e}")
         return None
 
 def count_parameters(model: nn.Module) -> int:

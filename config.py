@@ -8,9 +8,7 @@ class Config:
     # Base dataset folder
     DATASET_PATH = 'datasets'
 
-    # -------------------------
     # Scalp TYPE classifier data
-    # -------------------------
     TRAIN_DATA_PATH = os.path.join(DATASET_PATH, 'train')
     VALID_DATA_PATH = os.path.join(DATASET_PATH, 'valid')
 
@@ -20,9 +18,7 @@ class Config:
     TRAIN_CSV_PATH = os.path.join(TRAIN_DATA_PATH, 'train_labels.csv')
     VALID_CSV_PATH = os.path.join(VALID_DATA_PATH, 'valid_labels.csv')
 
-    # -------------------------
     # Scalp VALIDATOR data (non-scalp)
-    # -------------------------
     NONSCALP_TRAIN_DATA_PATH = os.path.join(DATASET_PATH, 'nonscalp_train')
     NONSCALP_VALID_DATA_PATH = os.path.join(DATASET_PATH, 'nonscalp_valid')
 
@@ -32,9 +28,7 @@ class Config:
     NONSCALP_TRAIN_CSV_PATH = os.path.join(NONSCALP_TRAIN_DATA_PATH, 'nonscalp_train_labels.csv')
     NONSCALP_VALID_CSV_PATH = os.path.join(NONSCALP_VALID_DATA_PATH, 'nonscalp_valid_labels.csv')
 
-    # -------------------------
     # Model save paths
-    # -------------------------
     ML_MODELS_PATH = 'ml_models'
     SCALP_CLASSIFIER_PATH = os.path.join(ML_MODELS_PATH, 'scalp_classifier.pth')
     SCALP_VALIDATOR_PATH = os.path.join(ML_MODELS_PATH, 'scalp_validator.pth')

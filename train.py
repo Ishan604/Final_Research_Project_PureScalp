@@ -90,11 +90,9 @@ def validate_epoch(model: nn.Module, val_loader, criterion, device: torch.device
     return running_loss / max(1, len(val_loader)), 100. * correct / max(1, total), all_predicted, all_labels
 
 
-# ---------------------------------------------------
 # 1) Train + Save Scalp Validator (binary)
-# ---------------------------------------------------
 def train_scalp_validator():
-    print("🛡️ Training Scalp Validator (Scalp vs Non-Scalp)")
+    print("Training Scalp Validator (Scalp vs Non-Scalp)")
     print("=" * 60)
 
     # checks
@@ -112,13 +110,13 @@ def train_scalp_validator():
 
     print(f"Using device: {Config.DEVICE}\n")
 
-    print("📊 Loading validator data...")
+    print("Loading validator data...")
     train_loader, val_loader, class_names = create_validator_data_loaders()
-    print(f"✅ Validator classes: {class_names}")
+    print(f"Validator classes: {class_names}")
     print(f"Training batches: {len(train_loader)}")
     print(f"Validation batches: {len(val_loader)}\n")
 
-    print("🏗️ Creating validator model...")
+    print("Creating validator model...")
     model = create_scalp_validator()
     info = get_model_info(model)
     print(f"Model: {model.__class__.__name__}")
@@ -133,11 +131,11 @@ def train_scalp_validator():
 
     train_losses, val_losses, train_accs, val_accs = [], [], [], []
 
-    print("🎯 Starting validator training...")
+    print("Starting validator training...")
     start_time = time.time()
 
     for epoch in range(Config.NUM_EPOCHS):
-        print(f"\nEpoch {epoch + 1}/{Config.NUM_EPOCHS}")
+        print(f"\n Epoch {epoch + 1}/{Config.NUM_EPOCHS}")
         print("-" * 30)
 
         train_loss, train_acc = train_epoch(model, train_loader, criterion, optimizer, Config.DEVICE)
@@ -155,30 +153,28 @@ def train_scalp_validator():
         print(f"LR: {scheduler.get_last_lr()[0]:.6f}")
 
         if early_stopping(val_loss, model):
-            print(f"\n⏹️ Early stopping triggered at epoch {epoch + 1}")
+            print(f"\n Early stopping triggered at epoch {epoch + 1}")
             break
 
-    print(f"\n✅ Validator training completed in {(time.time() - start_time) / 60:.2f} minutes")
+    print(f"\n Validator training completed in {(time.time() - start_time) / 60:.2f} minutes")
 
     metrics = calculate_metrics(val_lab, val_pred, class_names)
-    print("\n📊 Validator Metrics:")
+    print("\n Validator Metrics:")
     print(f"Accuracy: {metrics['accuracy']:.4f}")
     print(f"F1:       {metrics['f1_score']:.4f}")
     print(metrics['classification_report'])
 
-    print("\n📈 Saving plots...")
+    print("\n Saving plots...")
     plot_training_history(train_losses, val_losses, train_accs, val_accs)
     plot_confusion_matrix(metrics['confusion_matrix'], class_names)
 
-    print("\n💾 Saving validator model...")
+    print("\n Saving validator model...")
     save_model(model, Config.SCALP_VALIDATOR_PATH, class_names)
 
 
-# ---------------------------------------------------
 # 2) Train + Save Scalp Classifier (4-class)
-# ---------------------------------------------------
 def train_scalp_classifier():
-    print("\n🚀 Training Scalp Classifier (4 classes)")
+    print("\n Training Scalp Classifier (4 classes)")
     print("=" * 60)
 
     if not os.path.exists(Config.DATASET_PATH):
@@ -191,15 +187,15 @@ def train_scalp_classifier():
     os.makedirs(Config.ML_MODELS_PATH, exist_ok=True)
     print(f"Using device: {Config.DEVICE}\n")
 
-    print("📊 Loading classifier data...")
+    print("Loading classifier data...")
     train_loader, val_loader, class_names = create_data_loaders()
     Config.NUM_CLASSES = len(class_names)
 
-    print(f"✅ Classes: {class_names}")
+    print(f"Classes: {class_names}")
     print(f"Training batches: {len(train_loader)}")
     print(f"Validation batches: {len(val_loader)}\n")
 
-    print("🏗️ Creating classifier model...")
+    print("Creating classifier model...")
     model = create_scalp_classifier(len(class_names))
     info = get_model_info(model)
     print(f"Model: {model.__class__.__name__}")
@@ -214,11 +210,11 @@ def train_scalp_classifier():
 
     train_losses, val_losses, train_accs, val_accs = [], [], [], []
 
-    print("🎯 Starting classifier training...")
+    print("Starting classifier training...")
     start_time = time.time()
 
     for epoch in range(Config.NUM_EPOCHS):
-        print(f"\nEpoch {epoch + 1}/{Config.NUM_EPOCHS}")
+        print(f"\n Epoch {epoch + 1}/{Config.NUM_EPOCHS}")
         print("-" * 30)
 
         train_loss, train_acc = train_epoch(model, train_loader, criterion, optimizer, Config.DEVICE)
@@ -236,22 +232,22 @@ def train_scalp_classifier():
         print(f"LR: {scheduler.get_last_lr()[0]:.6f}")
 
         if early_stopping(val_loss, model):
-            print(f"\n⏹️ Early stopping triggered at epoch {epoch + 1}")
+            print(f"\n Early stopping triggered at epoch {epoch + 1}")
             break
 
-    print(f"\n✅ Classifier training completed in {(time.time() - start_time) / 60:.2f} minutes")
+    print(f"\n Classifier training completed in {(time.time() - start_time) / 60:.2f} minutes")
 
     metrics = calculate_metrics(val_lab, val_pred, class_names)
-    print("\n📊 Classifier Metrics:")
+    print("\n Classifier Metrics:")
     print(f"Accuracy: {metrics['accuracy']:.4f}")
     print(f"F1:       {metrics['f1_score']:.4f}")
     print(metrics['classification_report'])
 
-    print("\n📈 Saving plots...")
+    print("\n Saving plots...")
     plot_training_history(train_losses, val_losses, train_accs, val_accs)
     plot_confusion_matrix(metrics['confusion_matrix'], class_names)
 
-    print("\n💾 Saving classifier model...")
+    print("\n Saving classifier model...")
     save_model(model, Config.SCALP_CLASSIFIER_PATH, class_names)
     save_class_names(class_names)
 

@@ -19,9 +19,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from config import Config
 
 
-# ======================================================
-# Scalp TYPE Dataset (unchanged)
-# ======================================================
+# Scalp TYPE Dataset 
 class ScalpDataset(Dataset):
     def __init__(self, csv_file: str, images_dir: str, transform=None):
         self.data = pd.read_csv(csv_file)
@@ -71,9 +69,7 @@ class ScalpDataset(Dataset):
         return image, torch.tensor(label, dtype=torch.long)
 
 
-# ======================================================
-# ✅ FIXED: Scalp Validator Dataset (AUTO CSV SUPPORT)
-# ======================================================
+# FIXED: Scalp Validator Dataset (AUTO CSV SUPPORT)
 class ScalpValidatorDataset(Dataset):
     """
     Binary dataset:
@@ -97,7 +93,7 @@ class ScalpValidatorDataset(Dataset):
         scalp_df = pd.read_csv(scalp_csv)
         nonscalp_df = pd.read_csv(nonscalp_csv)
 
-        # ✅ AUTO-DETECT FIRST COLUMN
+        # AUTO-DETECT FIRST COLUMN
         scalp_col = scalp_df.columns[0]
         nonscalp_col = nonscalp_df.columns[0]
 
@@ -137,9 +133,7 @@ class ScalpValidatorDataset(Dataset):
         return image, torch.tensor(row['label'], dtype=torch.long)
 
 
-# ======================================================
 # Transforms
-# ======================================================
 def get_transforms(is_training=True):
     if is_training:
         return A.Compose([
@@ -160,9 +154,7 @@ def get_transforms(is_training=True):
         ])
 
 
-# ======================================================
 # Data Loaders
-# ======================================================
 def create_data_loaders():
     train_ds = ScalpDataset(Config.TRAIN_CSV_PATH, Config.TRAIN_IMAGES_PATH, get_transforms(True))
     val_ds = ScalpDataset(Config.VALID_CSV_PATH, Config.VALID_IMAGES_PATH, get_transforms(False))
@@ -198,9 +190,7 @@ def create_validator_data_loaders():
     )
 
 
-# ======================================================
-# Metrics (unchanged)
-# ======================================================
+# Metrics 
 def calculate_metrics(y_true, y_pred, class_names):
     return {
         'accuracy': accuracy_score(y_true, y_pred),
@@ -211,9 +201,7 @@ def calculate_metrics(y_true, y_pred, class_names):
         'confusion_matrix': confusion_matrix(y_true, y_pred)
     }
 
-# ======================================================
 # Plotting & Saving Utilities (REQUIRED by train.py)
-# ======================================================
 
 def plot_training_history(train_losses, val_losses, train_accs, val_accs):
     import matplotlib.pyplot as plt
@@ -283,11 +271,9 @@ def save_class_names(class_names):
     with open(path, 'w') as f:
         json.dump(class_names, f, indent=4)
 
-    print(f"✅ Class names saved to: {path}")
+    print(f"Class names saved to: {path}")
 
-# ======================================================
 # Runtime utilities required by Flask routes (app.py)
-# ======================================================
 
 def create_upload_folder():
     """
